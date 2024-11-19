@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<c:set var="title" value="Listado de Justificaciones" scope="request" />
+	</ui:define>
+	<ui:define name="content">
+		<h:form id="formJustificacionesPropias">
+			<h:messages id="mensajes" globalOnly="true" />
+
+			<!-- Menú desplegable para seleccionar el estado -->
+			<p:panelGrid columns="2" style="margin-bottom:10px">
+				<p:outputLabel value="Filtrar por Estado:" for="estadoMenu" />
+				<p:selectOneMenu id="estadoMenu"
+					value="#{justificacionBean.estadoSeleccionado}" style="width:200px">
+					<f:selectItem itemLabel="Todos" itemValue="" />
+					<f:selectItems value="#{justificacionBean.estados}" var="estado"
+						itemValue="#{estado.idEstado}" itemLabel="#{estado.descripcion}" />
+					<p:ajax event="change"
+						listener="#{justificacionBean.filtrarPorEstado}"
+						update="tablaJustificacionesPropias" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+			<p:dataTable id="tablaJustificacionesPropias"
+				value="#{justificacionBean.justificacionesFiltradas}"
+				var="justificacion" paginator="true" rows="10">
+
+				<p:column headerText="Detalle">
+					<h:outputText value="#{justificacion.detalle}" />
+				</p:column>
+				<p:column headerText="Estado">
+					<h:outputText value="#{justificacion.estado.descripcion}" />
+				</p:column>
+				<p:column headerText="Evento">
+					<h:outputText
+						value="#{not empty justificacion.convocadoEvento.convocatoriaEvento.evento.titulo ? justificacion.convocadoEvento.convocatoriaEvento.evento.titulo : 'Sin título'}" />
+				</p:column>
+
+				<p:column headerText="Modificar">
+					<p:commandButton value="Modificar"
+						action="#{justificacionBean.irAModificarJustificacion(justificacion.idJustificacion)}"
+						ajax="false" />
+				</p:column>
+
+				<p:column headerText="Desactivar">
+					<p:commandButton value="Eliminar"
+						action="#{justificacionBean.eliminarJustificacion(justificacion.idJustificacion)}"
+						update=":formJustificacionesPropias:mensajes :formJustificacionesPropias:tablaJustificacionesPropias">
+						<p:confirm header="Confirmación"
+							message="¿Está seguro de que desea eliminar la justificación?"
+							icon="pi pi-exclamation-triangle" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+		<!-- Confirmación -->
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+			header="Confirmación" icon="pi pi-exclamation-triangle">
+			<p:commandButton value="Sí" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,124 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jstl/core">
+
+<ui:composition template="/layout/layout.xhtml">
+	<ui:define name="title">
+		<c:set var="title" value="Alta de Evento" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:messages globalOnly="false" />
+
+			<p:messages id="messages" closable="true" globalOnly="true">
+				<p:autoUpdate />
+			</p:messages>
+
+			<table>
+				<tr>
+					<td><label for="titulo">Título:</label></td>
+					<td><h:inputText id="titulo" value="#{eventoBean.titulo}"
+							required="true" requiredMessage="El título es obligatorio"  maxlength="50"
+                     validatorMessage="El título no puede exceder los 50 caracteres"/></td>
+					<td><p:message for="titulo" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><label for="tipoEvento">Tipo de Evento:</label></td>
+					<td><h:selectOneMenu id="tipoEvento"
+							value="#{eventoBean.tipoEvento}" converter="tipoEventoConverter">
+							<f:selectItems value="#{eventoBean.listaTiposEvento}" var="tipo"
+								itemValue="#{tipo.descripcion}" itemLabel="#{tipo.descripcion}" />
+						</h:selectOneMenu></td>
+					<td><p:message for="tipoEvento" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><label for="horaInicio">Fecha y Hora de Inicio:</label></td>
+					<td><p:calendar id="horaInicio"
+							value="#{eventoBean.horaInicio}" pattern="dd/MM/yyyy HH:mm"
+							showOn="button" required="true"
+							requiredMessage="Hora inicio es obligatorio">
+							<f:converter converterId="timestampConverter" />
+						</p:calendar></td>
+					<td><p:message for="horaInicio" style="color: red" /></td>
+				</tr>
+				<tr>
+					<td><label for="horaFin">Fecha y Hora de Fin:</label></td>
+					<td><p:calendar id="horaFin" value="#{eventoBean.horaFin}"
+							pattern="dd/MM/yyyy HH:mm" showOn="button">
+							<f:converter converterId="timestampConverter" />
+						</p:calendar></td>
+					<td><p:message for="horaFin" style="color: red" /></td>
+				</tr>
+				<tr>
+				<td><label for="modalidad">Modalidad:</label></td>
+				<td><h:selectOneMenu id="modalidad"
+						value="#{eventoBean.modalidad}" converter="modalidadConverter">
+						<f:selectItems value="#{eventoBean.listaModalidades}"
+							var="modalidad" itemValue="#{modalidad}"
+							itemLabel="#{modalidad.descripcion}" />
+					</h:selectOneMenu> <p:message for="modalidad" /></td>
+				<td><p:message for="modalidad" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><label for="itr">ITR:</label></td>
+					<td><h:selectOneMenu id="itr"
+							value="#{eventoBean.itrSeleccionado}" converter="itrConverter">
+							<f:selectItems value="#{eventoBean.listaItrs}" var="itr"
+								itemValue="#{itr.nombre}" itemLabel="#{itr.nombre}" />
+						</h:selectOneMenu></td>
+					<td><p:message for="itr" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><label for="locacion">Localización:</label></td>
+					<td><h:inputText id="locacion" value="#{eventoBean.locacion}"
+							required="true" /></td>
+					<td><p:message for="locacion" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="tutores" value="Tutores:" /></td>
+					<td><p:selectCheckboxMenu id="tutores"
+							value="#{eventoBean.tutoresSeleccionados}"
+							label="Seleccionar Tutores" multiple="true" filter="true"
+							filterMatchMode="contains" panelStyle="width:250px"
+							scrollHeight="150">
+							<f:selectItems value="#{eventoBean.listaTutores}" var="tutor"
+								itemValue="#{tutor}"
+								itemLabel="#{tutor.primer_nombre} #{tutor.primer_apellido}" />
+							<p:ajax event="change" update="tutoresSeleccionadosPanel" />
+						</p:selectCheckboxMenu></td>
+					<td><p:message for="tutores" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td colspan="3"><p:outputPanel id="tutoresSeleccionadosPanel">
+							<p:panel header="Tutores Seleccionados"
+								rendered="#{not empty eventoBean.tutoresSeleccionados}">
+								<p:dataList value="#{eventoBean.tutoresSeleccionados}"
+									var="tutor" type="ordered">
+                                    #{tutor.primer_nombre} #{tutor.primer_apellido}
+                                </p:dataList>
+							</p:panel>
+						</p:outputPanel></td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><h:commandButton value="Crear"
+							action="#{eventoBean.altaEvento}">
+						</h:commandButton></td>
+					<td></td>
+				</tr>
+			</table>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

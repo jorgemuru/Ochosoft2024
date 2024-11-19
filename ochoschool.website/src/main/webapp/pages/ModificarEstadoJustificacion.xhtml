@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/layout/layout.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pf="http://primefaces.org/functions">
+
+    <f:metadata>
+        <!-- Vincular el parámetro de la URL al bean -->
+        <f:viewParam name="idJustificacion" value="#{justificacionBean.idJustificacion}" />
+        <f:viewAction
+            action="#{justificacionBean.cargarJustificacionSeleccionadaPorId(justificacionBean.idJustificacion)}"
+            if="#{!facesContext.postback}" />
+    </f:metadata>
+
+    <ui:define name="title">
+        <c:set var="title" value="Acciones sobre Justificación" scope="request" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="formAccionJustificacion" prependId="false">
+            <!-- Messages Component -->
+            <p:messages id="messages" closable="true" showDetail="true"
+                autoUpdate="true" />
+
+            <table cellpadding="5"
+                style="width: 100%; border-collapse: collapse;">
+
+                <tr>
+                    <td><h:outputLabel for="detalle" value="Detalle:" /></td>
+                    <td>
+                        <h:outputText id="detalle"
+                            value="#{justificacionBean.justificacion.detalle}" />
+                        <p:message for="detalle" style="color:red" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><h:outputLabel for="evento" value="Evento:" /></td>
+                    <td>
+                        <h:outputText id="evento"
+                            value="#{justificacionBean.justificacion.convocadoEvento.convocatoriaEvento.evento.titulo}" />
+                        <p:message for="evento" style="color:red" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><h:outputLabel for="estudiante" value="Estudiante Convocado:" /></td>
+                    <td>
+                        <h:outputText id="estudiante"
+                            value="#{justificacionBean.justificacion.convocadoEvento.estudiante.primer_nombre} #{justificacionBean.justificacion.convocadoEvento.estudiante.primer_apellido}" />
+                    </td>
+                </tr>
+
+                <tr id="estadoRow">
+					<td><h:outputLabel for="estado" value="Estado:" /></td>
+					<td><h:selectOneMenu id="estado"
+							value="#{justificacionBean.estadoSeleccionado}">
+							<f:selectItems value="#{justificacionBean.estados}" var="estado"
+								itemValue="#{estado.idEstado}" itemLabel="#{estado.descripcion}" />
+						</h:selectOneMenu> <p:message for="estado" style="color:red" /></td>
+				</tr>
+
+            </table>
+
+            <p:commandButton value="Cambiar Estado"
+				action="#{justificacionBean.cambiarEstado}" update="@form"
+				process="@form">
+				<p:confirm header="Confirmación"
+					message="¿Está seguro de que desea cambiar el estado de la justificación?"
+					icon="pi pi-exclamation-triangle" />
+			</p:commandButton>
+		</h:form>
+
+        <!-- Confirmación Dialog -->
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+            header="Confirmación" icon="pi pi-exclamation-triangle">
+            <p:commandButton value="Sí" type="button"
+                styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+            <p:commandButton value="No" type="button"
+                styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+        </p:confirmDialog>
+
+    </ui:define>
+</ui:composition>

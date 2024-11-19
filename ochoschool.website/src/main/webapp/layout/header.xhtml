@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<style>
+#DivPrincipal {
+	position: relative;
+	/* Asegura que el contenedor no interfiera con la posición */
+	z-index: 1000;
+}
+
+.ui-menubar {
+	z-index: 1000 !important;
+	position: relative;
+}
+</style>
+
+	<div id="DivPrincipal">
+		<img alt="" src="img/logo.png" />
+		<h1>OchoSchool - Sistema de Gestión Universitaria</h1>
+		<h:form update="@all">
+			<p:growl id="messages" />
+			<p:menubar>
+				<p:submenu label="Usuarios" icon="ui-icon-person">
+					<p:menuitem value="Actualizar datos propios"
+						outcome="/pages/ModificarDatosPropios.xhtml" />
+					<p:menuitem value="Listado de Usuarios"
+						outcome="/pages/Usuarios.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA'}" />
+				</p:submenu>
+				<p:submenu label="Constancias" icon="ui-icon-person"
+					rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA' or usuarioBean.getTipoUsuario() == 'ESTUDIANTE'}">
+					<p:menuitem value="Alta de Constancia"
+						outcome="/pages/enConstruccion.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ESTUDIANTE'}" />
+					<p:menuitem value="Listado de Constancias"
+						outcome="/pages/enConstruccion.xhtml" />
+					<p:menuitem value="Modificación de Constancias"
+						outcome="/pages/enConstruccion.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ESTUDIANTE'}" />
+					<p:menuitem value="Registro de Acciones"
+						outcome="/pages/enConstruccion.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA'}" />
+					<p:menuitem value="Modificación de Estado"
+						outcome="/pages/enConstruccion.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA'}" />
+					<p:menuitem value="Emisión de Constancia"
+						outcome="/pages/enConstruccion.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA'}" />
+				</p:submenu>
+				<p:submenu label="Justificaciones" icon="ui-icon-person"
+					rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA' or usuarioBean.getTipoUsuario() == 'ESTUDIANTE'}">
+					<p:menuitem value="Alta de Justificaciones"
+						outcome="/pages/AltaJustificacion.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ESTUDIANTE'}" />
+					<p:menuitem value="Listado de Justificaciones"
+						outcome="/pages/ListadoJustificacionesPropias.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ESTUDIANTE'}" />
+					<p:menuitem value="Listado de Justificaciones"
+						outcome="/pages/ListadoJustificaciones.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA'}" />
+				</p:submenu>
+				<p:submenu label="Eventos" icon="ui-icon-person"
+					rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA' or usuarioBean.getTipoUsuario() == 'TUTOR'}">
+					<p:menuitem value="Listado de Eventos"
+						outcome="/pages/ListadoEventos.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA' or usuarioBean.getTipoUsuario() == 'TUTOR'}" />
+					<p:menuitem value="Alta de Evento"
+						outcome="/pages/AltaEvento.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA'}" />
+					<p:menuitem value="Modificación de Eventos"
+						outcome="/pages/ModificarEvento.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA'}" />
+				</p:submenu>
+				<p:submenu label="Reclamos" icon="ui-icon-person"
+					rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA' or usuarioBean.getTipoUsuario() == 'ESTUDIANTE'}">
+					<p:menuitem value="Listado de Reclamos"
+						outcome="/pages/ListadoReclamos.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA'}" />
+					<p:menuitem value="Listado de Reclamos"
+						outcome="/pages/ListadoReclamosPropios.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ESTUDIANTE'}" />
+					<p:menuitem value="Alta de Reclamo"
+						outcome="/pages/altaReclamo.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ESTUDIANTE'}" />
+				</p:submenu>
+				<p:submenu label="Reportes" icon="ui-icon-person">
+					<p:menuitem value="Asistencias a Eventos por estudiante"
+						outcome="/pages/ListadoEventos.xhtml" />
+					<p:menuitem value="Escolaridad" outcome="/pages/AltaEvento.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA' or usuarioBean.getTipoUsuario() == 'TUTOR'}" />
+					<p:menuitem value="Listado Analítico de Reclamos"
+						outcome="/pages/ModificarEvento.xhtml"
+						rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA' or usuarioBean.getTipoUsuario() == 'TUTOR'}" />
+				</p:submenu>
+				<p:submenu label="Mantenimiento" icon="ui-icon-person"
+					rendered="#{usuarioBean.getTipoUsuario() == 'ANALISTA'}">
+					<p:menuitem value="ITRs" outcome="/pages/ITRs.xhtml" />
+					<p:menuitem value="Tipos de Usuarios"
+						outcome="/pages/AltaEvento.xhtml" />
+					<p:menuitem value="Estados de Eventos"
+						outcome="/pages/ModificarEvento.xhtml" />
+					<p:menuitem value="Modalidades de Eventos" />
+					<p:menuitem
+						value="Estados de Reclamos, Constancias y Justificaciones"
+						outcome="/pages/ListaEstadosReclamos.xhtml" />
+					<p:menuitem value="Tipos de Constancia" />
+					<p:menuitem value="Plantilla de Constancias" />
+				</p:submenu>
+				<f:facet name="options">
+					<h:outputLabel value="(" style="color:red; font-size:medium;" />
+					<h:outputLabel value="#{usuarioBean.getUsuario()}"
+						style="color:red; font-size:medium;" />
+					<h:outputLabel value=", " style="color:red; font-size:medium;" />
+					<h:outputLabel value="#{usuarioBean.getTipoUsuario()}"
+						style="color:green; font-size:medium;" />
+					<h:outputLabel value=")" style="color:red; font-size:medium;" />
+					<h:outputLabel value="  " />
+					<h:commandButton id="btnSalir" value="Cerrar sesión"
+						action="#{usuarioBean.logout}" style="margin-right:20px;"
+						ajax="false" />
+				</f:facet>
+			</p:menubar>
+		</h:form>
+	</div>
+	<hr />
+</ui:composition>

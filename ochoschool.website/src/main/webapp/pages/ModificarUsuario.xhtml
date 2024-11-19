@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pf="http://primefaces.org/functions">
+
+	<f:metadata>
+		<f:viewParam name="idUsuario" value="#{usuarioBean.idUsuario}" />
+		<f:viewAction
+			action="#{usuarioBean.cargarUsuarioSeleccionadoPorId(usuarioBean.idUsuario)}"
+			if="#{!facesContext.postback}" />
+	</f:metadata>
+
+	<ui:define name="title">
+		<c:set var="title" value="Modificar Usuario" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="formModificarUsuario">
+			<!-- Messages Component -->
+			<p:messages id="messages" closable="true" showDetail="true"
+				autoUpdate="true" />
+
+			<!-- Table to display user fields -->
+			<table cellpadding="5"
+				style="width: 100%; border-collapse: collapse;">
+				<!-- Primer Nombre -->
+				<tr>
+					<td><h:outputLabel for="primerNombre" value="Primer Nombre:" /></td>
+					<td><h:inputText id="primerNombre"
+							value="#{usuarioBean.usuarioSeleccionado.primer_nombre}" /> <p:message
+							for="primerNombre" style="color:red" /></td>
+				</tr>
+
+				<!-- Segundo Nombre -->
+				<tr>
+					<td><h:outputLabel for="segundoNombre" value="Segundo Nombre:" /></td>
+					<td><h:inputText id="segundoNombre"
+							value="#{usuarioBean.usuarioSeleccionado.segundo_nombre}" /> <p:message
+							for="segundoNombre" style="color:red" /></td>
+				</tr>
+
+				<!-- Primer Apellido -->
+				<tr>
+					<td><h:outputLabel for="primerApellido"
+							value="Primer Apellido:" /></td>
+					<td><h:inputText id="primerApellido"
+							value="#{usuarioBean.usuarioSeleccionado.primer_apellido}" /> <p:message
+							for="primerApellido" style="color:red" /></td>
+				</tr>
+
+				<!-- Segundo Apellido -->
+				<tr>
+					<td><h:outputLabel for="segundoApellido"
+							value="Segundo Apellido:" /></td>
+					<td><h:inputText id="segundoApellido"
+							value="#{usuarioBean.usuarioSeleccionado.segundo_apellido}" /> <p:message
+							for="segundoApellido" style="color:red" /></td>
+				</tr>
+
+				<!-- Documento -->
+				<tr>
+					<td><h:outputLabel for="documento" value="Documento:" /></td>
+					<td><h:inputText id="documento"
+							value="#{usuarioBean.usuarioSeleccionado.documento}" /> <p:message
+							for="documento" style="color:red" /></td>
+				</tr>
+
+				<!-- Email Personal -->
+				<tr>
+					<td><h:outputLabel for="emailPersonal" value="Email personal:" /></td>
+					<td><h:inputText id="emailPersonal"
+							value="#{usuarioBean.usuarioSeleccionado.mail_personal}" /> <p:message
+							for="emailPersonal" style="color:red" /></td>
+				</tr>
+
+				<!-- Email Institucional -->
+				<tr>
+					<td><h:outputLabel for="emailInstitucional"
+							value="Email institucional:" /></td>
+					<td><h:inputText id="emailInstitucional"
+							value="#{usuarioBean.usuarioSeleccionado.mail_institucional}" />
+						<p:message for="emailInstitucional" style="color:red" /></td>
+				</tr>
+
+				<!-- Fecha de Nacimiento -->
+				<tr>
+					<td><h:outputLabel for="fechaNacimiento"
+							value="Fecha de Nacimiento:" /></td>
+					<td><p:calendar id="fechaNacimiento"
+							value="#{usuarioBean.usuarioSeleccionado.fecha_nacimiento}"
+							pattern="dd-MM-yyyy" showOn="button" navigator="true"
+							yearRange="c-100:c+0" /> <p:message for="fechaNacimiento"
+							style="color:red" /></td>
+				</tr>
+
+				<!-- Teléfono -->
+				<tr>
+					<td><h:outputLabel for="telefono" value="Teléfono:" /></td>
+					<td><h:inputText id="telefono"
+							value="#{usuarioBean.usuarioSeleccionado.telefono}" /> <p:message
+							for="telefono" style="color:red" /></td>
+				</tr>
+
+				<!-- Género -->
+				<tr>
+					<td><h:outputLabel for="genero" value="Género:" /></td>
+					<td><h:selectOneMenu id="genero"
+							value="#{usuarioBean.usuarioSeleccionado.genero.idGenero}"
+							title="Seleccione un género">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItems value="#{usuarioBean.listaGeneros}" var="genero"
+								itemLabel="#{genero.nombre}" itemValue="#{genero.idGenero}" />
+						</h:selectOneMenu> <p:message for="genero" style="color:red" /></td>
+				</tr>
+
+				<!-- Tipo de Usuario -->
+				<tr>
+					<td><h:outputLabel for="tipoUsuario" value="Tipo de Usuario:" /></td>
+					<td><h:selectOneMenu id="tipoUsuario"
+							value="#{usuarioBean.usuarioSeleccionado.tipo_usuario}"
+							onchange="mostrarCamposEspecificos(this)">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItem itemValue="ANALISTA" itemLabel="ANALISTA" />
+							<f:selectItem itemValue="ESTUDIANTE" itemLabel="ESTUDIANTE" />
+							<f:selectItem itemValue="TUTOR" itemLabel="TUTOR" />
+						</h:selectOneMenu> <p:message for="tipoUsuario" style="color:red" /></td>
+				</tr>
+
+				<!-- ITR -->
+				<tr>
+					<td><h:outputLabel for="itr" value="ITR:" /></td>
+					<td><h:selectOneMenu id="itr"
+							value="#{usuarioBean.usuarioSeleccionado.itrAsItr.idItr}">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItems value="#{usuarioBean.listaItr}" var="itr"
+								itemLabel="#{itr.nombre}" itemValue="#{itr.idItr}" />
+						</h:selectOneMenu> <p:message for="itr" style="color:red" /></td>
+				</tr>
+
+				<!-- Departamento -->
+				<tr>
+					<td><h:outputLabel for="departamento" value="Departamento:" /></td>
+					<td><h:selectOneMenu id="departamento"
+							value="#{usuarioBean.usuarioSeleccionado.departamentoAsDpto.idDepartamento}">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItems value="#{usuarioBean.listaDepartamentos}"
+								var="departamento" itemLabel="#{departamento.nombre}"
+								itemValue="#{departamento.idDepartamento}" />
+						</h:selectOneMenu> <p:message for="departamento" style="color:red" /></td>
+				</tr>
+
+				<!-- Localidad -->
+				<tr>
+					<td><h:outputLabel for="localidad" value="Localidad:" /></td>
+					<td><h:selectOneMenu id="localidad"
+							value="#{usuarioBean.usuarioSeleccionado.localidadAsLoc.idLocalidad}">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItems value="#{usuarioBean.listaLocalidades}"
+								var="localidad" itemLabel="#{localidad.nombre}"
+								itemValue="#{localidad.idLocalidad}" />
+						</h:selectOneMenu> <p:message for="localidad" style="color:red" /></td>
+				</tr>
+
+				<!-- Año de Ingreso (Solo para Estudiantes) -->
+				<tr id="anioIngresoRow" style="display: none;">
+					<td><h:outputLabel for="generacion" value="Año de Ingreso:" /></td>
+					<td><h:inputText id="generacion"
+							value="#{usuarioBean.generacionSeleccionada}" /> <p:message
+							for="generacion" style="color:red" /></td>
+				</tr>
+
+				<!-- Área (Solo para Tutores) -->
+				<tr id="areaRow" style="display: none;">
+					<td><h:outputLabel for="area" value="Área:" /></td>
+					<td><h:selectOneMenu id="area"
+							value="#{usuarioBean.areaSeleccionada}">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItems value="#{usuarioBean.listaAreas}" var="area"
+								itemLabel="#{area.descripcion}" itemValue="#{area.idArea}" />
+						</h:selectOneMenu> <p:message for="area" style="color:red" /></td>
+				</tr>
+
+				<!-- Rol (Solo para Tutores) -->
+				<tr id="rolRow" style="display: none;">
+					<td><h:outputLabel for="rol" value="Rol:" /></td>
+					<td><h:selectOneMenu id="rol"
+							value="#{usuarioBean.rolSeleccionado}">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItems value="#{usuarioBean.listaRoles}" var="rol"
+								itemLabel="#{rol.descripcion}" itemValue="#{rol.idRol}" />
+						</h:selectOneMenu> <p:message for="rol" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="confirmado" value="Confirmado:" /></td>
+					<td><h:selectOneMenu id="confirmado"
+							value="#{usuarioBean.usuarioSeleccionado.confirmado}"
+							onchange="mostrarCamposEspecificos(this)">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItem itemValue="S" itemLabel="SI" />
+							<f:selectItem itemValue="N" itemLabel="NO" />
+						</h:selectOneMenu> <p:message for="tipoUsuario" style="color:red" /></td>
+				</tr>
+			</table>
+
+			<!-- Modify Button -->
+			<p:commandButton value="Modificar"
+				action="#{usuarioBean.modificarUsuario}" update="@form"
+				process="@form">
+				<p:confirm header="Confirmación"
+					message="¿Está seguro de que desea modificar al Usuario?"
+					icon="pi pi-exclamation-triangle" />
+			</p:commandButton>
+		</h:form>
+
+		<!-- Confirmación -->
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+			header="Confirmación" icon="pi pi-exclamation-triangle">
+			<p:commandButton value="Sí" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+
+
+		<!-- JavaScript Functions -->
+		<script type="text/javascript">
+            window.onload = function() {
+                var tipoUsuarioSelect = document.getElementById('formModificarUsuario:tipoUsuario');
+                mostrarCamposEspecificos(tipoUsuarioSelect);
+            };
+
+            function mostrarCamposEspecificos(selectElement) {
+                var selectedValue = selectElement.value;
+                var anioIngresoRow = document.getElementById('anioIngresoRow');
+                var areaRow = document.getElementById('areaRow');
+                var rolRow = document.getElementById('rolRow');
+
+                if (selectedValue === 'ESTUDIANTE') {
+                    anioIngresoRow.style.display = '';
+                    areaRow.style.display = 'none';
+                    rolRow.style.display = 'none';
+                } else if (selectedValue === 'TUTOR') {
+                    anioIngresoRow.style.display = 'none';
+                    areaRow.style.display = '';
+                    rolRow.style.display = '';
+                } else {
+                    anioIngresoRow.style.display = 'none';
+                    areaRow.style.display = 'none';
+                    rolRow.style.display = 'none';
+                }
+            }
+        </script>
+	</ui:define>
+</ui:composition>

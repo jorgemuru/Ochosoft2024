@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pf="http://primefaces.org/functions">
+
+	<f:metadata>
+		<!-- Vincular el parámetro de la URL al bean -->
+		<f:viewParam name="idJustificacion"
+			value="#{justificacionBean.idJustificacion}" />
+		<f:viewAction
+			action="#{justificacionBean.cargarJustificacionSeleccionadaPorId(justificacionBean.idJustificacion)}"
+			if="#{!facesContext.postback}" />
+	</f:metadata>
+
+	<ui:define name="title">
+		<c:set var="title" value="Modificar Justificación" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="formModificarJustificacion" prependId="false">
+			<!-- Messages Component -->
+			<p:messages id="messages" closable="true" showDetail="true"
+				autoUpdate="true" />
+
+
+			<table cellpadding="5"
+				style="width: 100%; border-collapse: collapse;">
+
+
+				<tr>
+					<td><label for="evento">Evento:</label></td>
+					<td><h:selectOneMenu id="evento"
+							value="#{justificacionBean.convocadoEventoIdSeleccionado}">
+							<f:selectItems value="#{justificacionBean.eventosConvocados}"
+								var="convocado"
+								itemLabel="#{convocado.convocatoriaEvento.evento.titulo}"
+								itemValue="#{convocado.idConvocadoEvento}" />
+						</h:selectOneMenu></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="detalle" value="Detalle:" /></td>
+					<td><h:inputTextarea id="detalle"
+							value="#{justificacionBean.justificacion.detalle}" rows="5"
+							cols="30" /> <p:message for="detalle" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><label for="archivoAdjunto">Archivo Adjunto:</label></td>
+					<td><p:fileUpload id="archivoAdjunto"
+							value="#{justificacionBean.archivoAdjunto}" mode="advanced"
+							auto="false" dragDropSupport="false" label="Seleccionar Archivo"
+							sizeLimit="1048576" invalidSizeMessage="El tamaño máximo es 1 MB"
+							invalidFileMessage="Tipo de archivo no permitido"
+							multiple="false" /></td>
+					<td><p:message for="archivoAdjunto" style="color:red" /></td>
+				</tr>
+
+			</table>
+
+			<!-- Modify Button -->
+			<p:commandButton value="Modificar"
+				action="#{justificacionBean.modificarJustificacion}" update="@form"
+				process="@form">
+				<p:confirm header="Confirmación"
+					message="¿Está seguro de que desea modificar la Justificación?"
+					icon="pi pi-exclamation-triangle" />
+			</p:commandButton>
+		</h:form>
+
+		<!-- Confirmación -->
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+			header="Confirmación" icon="pi pi-exclamation-triangle">
+			<p:commandButton value="Sí" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+
+	</ui:define>
+</ui:composition>

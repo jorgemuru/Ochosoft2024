@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<c:set var="title" value="Listado Usuarios" scope="request" />
+	</ui:define>
+	<ui:define name="content">
+		<h:form id="formUsuarios">
+			<h:messages globalOnly="true" />
+
+			<!-- Menú desplegable para seleccionar el tipo de usuario -->
+			<p:panelGrid columns="2" style="margin-bottom:10px">
+				<p:outputLabel value="Filtrar por tipo de usuario:" />
+				<p:selectOneMenu value="#{usuarioBean.tipoUsuarioSeleccionado}"
+					style="width:200px">
+					<f:selectItem itemLabel="Todos" itemValue="" />
+					<f:selectItems value="#{usuarioBean.tiposUsuarios}" />
+					<p:ajax update="tablaUsuarios, filtroGeneracion"
+						listener="#{usuarioBean.filtrarDatosAcumulados}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+			<!-- Menú desplegable para seleccionar ITR -->
+			<p:panelGrid columns="2" style="margin-bottom:10px">
+				<p:outputLabel value="Filtrar por ITR:" />
+				<p:selectOneMenu value="#{usuarioBean.itrSeleccionado}"
+					style="width:200px">
+					<f:selectItem itemLabel="Todos" itemValue="#{null}" />
+					<f:selectItems value="#{usuarioBean.itrs}" var="itr"
+						itemLabel="#{itr.label}" itemValue="#{itr.value}" />
+					<p:ajax update="tablaUsuarios"
+						listener="#{usuarioBean.filtrarDatosAcumulados}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+			<!-- Menú desplegable para seleccionar generación -->
+			<p:panelGrid columns="2" style="margin-bottom:10px"
+				id="filtroGeneracion">
+				<p:outputLabel value="Filtrar por generación:"
+					rendered="#{usuarioBean.filtrandoEstudiantes}" />
+				<p:selectOneMenu value="#{usuarioBean.generacionSeleccionada}"
+					style="width:200px" rendered="#{usuarioBean.filtrandoEstudiantes}">
+					<f:selectItem itemLabel="Todos" itemValue="" />
+					<f:selectItems value="#{usuarioBean.generaciones}" />
+					<p:ajax update="tablaUsuarios"
+						listener="#{usuarioBean.filtrarDatosAcumulados}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+			<!-- Menú desplegable para seleccionar estado (Activo/Inactivo) -->
+			<p:panelGrid columns="2" style="margin-bottom:10px">
+				<p:outputLabel value="Filtrar por estado (Confirmado):" />
+				<p:selectOneMenu value="#{usuarioBean.estadoConfirmadoSeleccionado}"
+					style="width:200px">
+					<f:selectItems value="#{usuarioBean.estadosConfirmados}" />
+					<p:ajax update="tablaUsuarios"
+						listener="#{usuarioBean.filtrarDatosAcumulados}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+			<!-- Menú desplegable para seleccionar estado (Activo/Inactivo) -->
+			<p:panelGrid columns="2" style="margin-bottom:10px">
+				<p:outputLabel value="Filtrar por estado (Activo):" />
+				<p:selectOneMenu value="#{usuarioBean.estadoActivoSeleccionado}"
+					style="width:200px">
+					<f:selectItems value="#{usuarioBean.estadosActivos}" />
+					<p:ajax update="tablaUsuarios"
+						listener="#{usuarioBean.filtrarDatosAcumulados}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+
+
+			<p:dataTable id="tablaUsuarios" value="#{usuarioBean.usuarios}"
+				var="usuario" paginator="true" rows="10">
+
+				<p:column headerText="ID Usuario">
+					<h:outputText value="#{usuario.idUsuario}" />
+				</p:column>
+				<p:column headerText="Documento">
+					<h:outputText value="#{usuario.documento}" />
+				</p:column>
+				<p:column headerText="Nombre">
+					<h:outputText
+						value="#{usuario.primer_nombre} #{usuario.segundo_nombre}" />
+				</p:column>
+				<p:column headerText="Apellido">
+					<h:outputText
+						value="#{usuario.primer_apellido} #{usuario.segundo_apellido}" />
+				</p:column>
+				<p:column headerText="Usuario">
+					<h:outputText value="#{usuario.usuario}" />
+				</p:column>
+				<p:column headerText="Tipo de Usuario">
+					<h:outputText value="#{usuario.tipo_usuario}" />
+				</p:column>
+
+				<p:column headerText="ITR">
+					<!-- Accede al campo nombre dentro del objeto 'itr' del usuario -->
+					<h:outputText value="#{usuario.itr['nombre']}" />
+				</p:column>
+
+				<p:column headerText="Activo">
+					<h:outputText value="#{usuario.activo}" />
+				</p:column>
+
+				<p:column headerText="Generación"
+					rendered="#{usuarioBean.filtrandoEstudiantes}">
+					<h:outputText value="#{usuario.generacion}" />
+				</p:column>
+
+				<p:column headerText="Modificar">
+					<p:commandButton value="Modificar"
+						action="#{usuarioBean.irAModificarUsuario(usuario['idUsuario'])}"
+						ajax="false" />
+				</p:column>
+
+				<p:column headerText="Desactivar">
+					<p:commandButton
+						value="#{usuario.activo eq 'S' ? 'Desactivar' : 'Activar'}"
+						action="#{usuarioBean.cambiarEstadoUsuario(usuario.idUsuario)}"
+						update="tablaUsuarios">
+						<p:confirm header="Confirmación"
+							message="#{usuario.activo eq 'S' ? '¿Está seguro de que desea desactivar al usuario?' : '¿Está seguro de que desea activar al usuario?'}"
+							icon="pi pi-exclamation-triangle" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+		<!-- Confirmación -->
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+			header="Confirmación" icon="pi pi-exclamation-triangle">
+			<p:commandButton value="Sí" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+	</ui:define>
+</ui:composition>

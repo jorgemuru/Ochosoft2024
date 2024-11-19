@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ui:define name="title">
+		<c:set var="title" value="Listado ITRs" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="formItrs">
+			<h:messages globalOnly="true" />
+			
+			<p:panelGrid columns="2" style="margin-bottom:10px">
+				<p:commandButton value="Alta nuevo ITR"
+						action="#{itrBean.irACrearItr}">
+					</p:commandButton>
+			</p:panelGrid>
+
+			<!-- Menú desplegable para seleccionar estado (Activo/Inactivo) -->
+			<p:panelGrid columns="2" style="margin-bottom:10px">
+				<p:outputLabel value="Filtrar por estado:" for="estadoFiltro" />
+				<p:selectOneMenu id="estadoFiltro"
+					value="#{itrBean.estadoSeleccionado}" style="width:200px">
+					<f:selectItem itemLabel="Activo (S)" itemValue="S" />
+					<f:selectItem itemLabel="Inactivo (N)" itemValue="N" />
+					<p:ajax update="tablaItrs" listener="#{itrBean.filtrarItrs}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+			<!-- Tabla de ITRs -->
+			<p:dataTable id="tablaItrs" value="#{itrBean.listaItrsFiltrados}"
+				var="itr" paginator="true" rows="10" selectionMode="single"
+				selection="#{itrBean.itrSeleccionado}" rowKey="#{itr.idItr}">
+
+				<p:column headerText="Nombre">
+					<h:outputText value="#{itr.nombre}" />
+				</p:column>
+				<p:column headerText="Departamento">
+					<h:outputText value="#{itr.departamento.nombre}" />
+				</p:column>
+				<p:column headerText="Activo">
+					<h:outputText value="#{itr.activo}" />
+				</p:column>
+
+				<p:column headerText="Modificar">
+					<p:commandButton value="Modificar"
+						action="#{itrBean.irAModificarItr(itr.idItr)}" update="@form"/>
+				</p:column>
+
+				<p:column headerText="Desactivar">
+					<p:commandButton value="#{itrBean.getActionLabel(itr)}"
+						action="#{itrBean.cambiarEstadoItr(itr.idItr)}" update="tablaItrs">
+						<p:confirm header="Confirmación"
+							message="#{itrBean.getConfirmMessage(itr)}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+		<!-- Confirmación -->
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+			header="Confirmación" icon="pi pi-exclamation-triangle">
+			<p:commandButton value="Sí" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+	</ui:define>
+</ui:composition>

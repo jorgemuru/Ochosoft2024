@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+E:\UTEC\SEmestre4\PFT\MICA\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+286469056.index
+3970846994.index
+1839562136.index
+662784773.index
+3644284513.index
+1979630424.index
+856284135.index

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pf="http://primefaces.org/functions">
+
+	<f:metadata>
+		<!-- Vincular el parámetro de la URL al bean -->
+		<f:viewParam name="idReclamo" value="#{reclamoBean.idReclamo}" />
+		<f:viewAction
+			action="#{reclamoBean.cargarReclamoSeleccionadoPorId(reclamoBean.idReclamo)}"
+			if="#{!facesContext.postback}" />
+	</f:metadata>
+
+	<ui:define name="title">
+		<c:set var="title" value="Modificar Reclamo" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="formModificarReclamo" prependId="false">
+			<!-- Messages Component -->
+			<p:messages id="messages" closable="true" showDetail="true"
+				autoUpdate="true" />
+
+			<!-- Table to display reclamo fields -->
+			<table cellpadding="5"
+				style="width: 100%; border-collapse: collapse;">
+
+				<tr>
+					<td><h:outputLabel for="titulo" value="Título:" /></td>
+					<td><h:inputText id="titulo"
+							value="#{reclamoBean.reclamoSeleccionado.titulo}" />
+						<p:message for="titulo" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="descripcion" value="Descripción:" /></td>
+					<td><h:inputTextarea id="descripcion"
+							value="#{reclamoBean.reclamoSeleccionado.descripcion}" rows="5"
+							cols="30" /> <p:message for="descripcion"
+							style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><label for="tipoReclamo">Tipo de Reclamo:</label></td>
+					<td><h:selectOneMenu id="tipoReclamo"
+							value="#{reclamoBean.reclamoSeleccionado.tipoReclamo.idTipoReclamo}"
+							onchange="mostrarCamposAdicionales(this);"
+							styleClass="tipoReclamoMenu">
+							<f:selectItems value="#{reclamoBean.listaTiposReclamo}"
+								var="tipoReclamo" itemLabel="#{tipoReclamo.descripcion}"
+								itemValue="#{tipoReclamo.idTipoReclamo}" />
+						</h:selectOneMenu></td>
+				</tr>
+
+				<tr id="nombreRow" style="display: none;">
+					<td><h:outputLabel for="nombreActividad"
+							value="Nombre de la Actividad:" /></td>
+					<td><h:inputText id="nombreActividad"
+							value="#{reclamoBean.reclamoSeleccionado.nombre}" /> <p:message
+							for="nombreActividad" style="color:red" /></td>
+				</tr>
+
+				<tr id="semestreRow" style="display: none;">
+					<td><h:outputLabel for="semestre" value="Semestre:" /></td>
+					<td><p:inputNumber id="semestre" name="semestre"
+							value="#{reclamoBean.reclamoSeleccionado.semestre}" minValue="1"
+							maxValue="8" step="1" /> <p:message for="semestre"
+							style="color:red" /></td>
+				</tr>
+
+				<tr id="creditosRow" style="display: none;">
+					<td><h:outputLabel for="creditos" value="Créditos:" /></td>
+					<td><p:inputNumber id="creditos" name="creditos"
+							value="#{reclamoBean.reclamoSeleccionado.creditos}" minValue="0"
+							step="1" /> <p:message for="creditos" style="color:red" /></td>
+				</tr>
+
+				<tr id="fechaRealizacionRow" style="display: none;">
+					<td><h:outputLabel for="fechaRealizacion"
+							value="Fecha de Realización:" /></td>
+					<td><p:calendar id="fechaRealizacion" name="fechaRealizacion"
+							value="#{reclamoBean.reclamoSeleccionado.fechaRealizacion}"
+							label="Fecha de Realización" pattern="yyyy-MM-dd"
+							showButtonPanel="true" navigator="true" /> <p:message
+							for="fechaRealizacion" style="color:red" /></td>
+				</tr>
+
+				<tr id="docenteRow" style="display: none;">
+					<td><h:outputLabel for="docente" value="Docente encargado:" /></td>
+					<td><h:selectOneMenu id="docente"
+							value="#{reclamoBean.idTutorSeleccionado}">
+							<f:selectItem itemValue="" itemLabel="Seleccione..." />
+							<f:selectItems value="#{reclamoBean.listaTutores}" var="tutor"
+								itemValue="#{tutor.idUsuario}"
+								itemLabel="#{tutor.primer_nombre} #{tutor.primer_apellido}" />
+						</h:selectOneMenu> <p:message for="docente" style="color:red" /></td>
+				</tr>
+
+			</table>
+
+			<!-- Modify Button -->
+			<p:commandButton value="Modificar"
+				action="#{reclamoBean.modificarReclamo}" update="@form"
+				process="@form">
+				<p:confirm header="Confirmación"
+					message="¿Está seguro de que desea modificar el Reclamo?"
+					icon="pi pi-exclamation-triangle" />
+			</p:commandButton>
+		</h:form>
+
+		<!-- Confirmación -->
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+			header="Confirmación" icon="pi pi-exclamation-triangle">
+			<p:commandButton value="Sí" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+
+
+		<script type="text/javascript">
+    function mostrarCamposAdicionales(selectElement) {
+        // Obtener el texto de la opción seleccionada
+        var selectedText = selectElement.options[selectElement.selectedIndex].text.toUpperCase();
+        var camposAdicionales = ["nombreRow", "semestreRow", "fechaRealizacionRow", "docenteRow", "creditosRow"];
+
+        if (selectedText === "VME" || selectedText === "APE" || selectedText === "OPTATIVA") {
+            camposAdicionales.forEach(function(id) {
+                var row = document.getElementById(id);
+                if (row) {
+                    row.style.display = "";
+                }
+            });
+        } else {
+            camposAdicionales.forEach(function(id) {
+                var row = document.getElementById(id);
+                if (row) {
+                    row.style.display = "none";
+                }
+            });
+        }
+    }
+
+    // Ejecutar cuando el documento esté completamente cargado
+    document.addEventListener('DOMContentLoaded', function() {
+        // Seleccionar el selectOneMenu usando la clase CSS
+        var selectElements = document.getElementsByClassName('tipoReclamoMenu');
+        if (selectElements.length > 0) {
+            mostrarCamposAdicionales(selectElements[0]);
+        }
+    });
+</script>
+	</ui:define>
+</ui:composition>

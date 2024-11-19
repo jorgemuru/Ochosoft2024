@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-digest-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-mechanism-digest-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/picketbox/main/picketbox-commons-1.0.0.final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/jboss/resteasy/resteasy-jaxrs/main/resteasy-client-3.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-scram-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/picketbox/main/picketbox-5.0.3.Final-redhat-00005.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-http-bearer-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/persistence/api/main/jakarta.persistence-api-2.2.3.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-jaspi-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-x500-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/enterprise/concurrent/api/main/jboss-concurrency-api_1.0_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-asn1-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-gs2-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-x500-deprecated-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-http-cert-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/enterprise/api/main/jakarta.enterprise.cdi-api-2.0.2.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/security/auth/message/api/main/jboss-jaspi-api_1.1_spec-2.0.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-entity-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/jms/api/main/jboss-jms-api_2.0_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-auth-server-sasl-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-external-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-auth-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/orb/api/main/openjdk-orb-8.1.4.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-provider-util-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/annotation/api/main/jboss-annotations-api_1.3_spec-2.0.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-permission-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/websocket/api/main/jboss-websocket-api_1.1_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-client-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-auth-server-deprecated-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-auth-util-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-http-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-http-deprecated-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-mechanism-gssapi-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-credential-store-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-auth-server-http-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/activation/api/main/jakarta.activation-1.2.1.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-otp-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-mechanism-oauth2-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-auth-util-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-util-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/inject/api/main/jakarta.inject-api-1.0.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/xml/ws/api/main/jboss-jaxws-api_2.3_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-localuser-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/interceptor/api/main/jboss-interceptors-api_1.2_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/servlet/api/main/jboss-servlet-api_4.0_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-http-basic-1.12.1.Final.jar"/>
+  <path value="E:/UTEC/SEmestre4/PFT/MICA/ochoschool.apirest/lib/com.fasterxml.jackson.core.jackson-annotations_2.12.6.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/jws/api/main/jsr181-api-1.0-MR1.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-digest-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/jboss/resteasy/resteasy-jaxrs/main/resteasy-jaxrs-3.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-x500-cert-acme-1.12.1.Final.jar"/>
+  <path value="E:/UTEC/SEmestre4/PFT/MICA/ochoschool.apirest/lib/com.fasterxml.jackson.core.jackson-databind_2.12.6.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/transaction/api/main/jboss-transaction-api_1.3_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-realm-jdbc-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/security/jacc/api/main/jboss-jacc-api_1.5_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/jboss/resteasy/resteasy-jaxb-provider/main/resteasy-jaxb-provider-3.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-x500-principal-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/xml/bind/api/main/jboss-jaxb-api_2.3_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-jacc-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-realm-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-realm-token-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/ws/rs/api/main/jboss-jaxrs-api_2.1_spec-2.0.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/mail/api/main/jakarta.mail-1.6.5.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-mechanism-scram-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/wsdl4j/api/main/wsdl4j-1.6.3.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/resource/api/main/jboss-connector-api_1.7_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/faces/api/main/jboss-jsf-api_2.3_spec-3.0.0.SP04.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/jboss/as/controller-client/main/wildfly-controller-client-12.0.3.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-security-manager-action-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/servlet/jstl/api/main/taglibs-standard-impl-1.2.6-RC1.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c-1_0-rt.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c-1_1.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fmt-1_0-rt.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fmt.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fn.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/permittedtaglibs.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/scriptfree.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/sql-1_0-rt.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/sql.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/x-1_0-rt.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/x.tld" project="ochoschool.apirest"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/batch/api/main/jboss-batch-api_1.0_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-x500-cert-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-http-sso-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-credential-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-ssl-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-plain-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/servlet/jstl/api/main/taglibs-standard-compat-1.2.6-RC1.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/c-1_0.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/fmt-1_0.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/sql-1_0.tld" project="ochoschool.apirest"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/x-1_0.tld" project="ochoschool.apirest"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-anonymous-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/xml/rpc/api/main/jboss-jaxrpc-api_1.1_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/jboss/dmr/main/jboss-dmr-1.5.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-json-util-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-http-form-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/hibernate/validator/main/hibernate-validator-6.0.20.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/ejb/api/main/jboss-ejb-api_3.2_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/el/api/main/jboss-el-api_3.0_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/json/api/main/jakarta.json-api-1.1.6.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-audit-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-mechanism-http-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/xml/soap/api/main/jboss-saaj-api_1.4_spec-1.0.2.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-deprecated-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/jboss/ejb3/main/jboss-ejb3-ext-api-2.3.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-auth-server-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-base-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-realm-ldap-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-credential-source-deprecated-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/servlet/jstl/api/main/taglibs-standard-spec-1.2.6-RC1.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/jboss/resteasy/resteasy-multipart-provider/main/resteasy-multipart-provider-3.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-http-digest-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-x500-cert-util-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-gssapi-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/management/j2ee/api/main/jboss-j2eemgmt-api_1.1_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/common/main/wildfly-common-1.5.4.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/validation/api/main/jakarta.validation-api-2.0.2.jar"/>
+  <path value="E:/UTEC/SEmestre4/PFT/MICA/ochoschool.apirest/lib/com.fasterxml.jackson.core.jackson-core_2.12.6.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/javax/servlet/jsp/api/main/jboss-jsp-api_2.3_spec-2.0.0.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/picketbox/main/picketbox-infinispan-5.0.3.Final-redhat-00005.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-http-util-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-credential-source-impl-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-http-spnego-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-security-manager-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/jboss/logging/main/jboss-logging-3.4.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-mechanism-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-keystore-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-password-impl-1.12.1.Final.jar"/>
+  <path value="C:/wildfly-20.0.1.Final/modules/system/layers/base/org/wildfly/security/elytron-private/main/wildfly-elytron-sasl-oauth2-1.12.1.Final.jar"/>
+ </paths>
+ <validation>
+  <core validator-id="jboss.cdi.core">
+   <linked-resource name="%1;" path="%0"/>
+   <linked-resource name="%3;" path="%2"/>
+   <linked-resource name="%5;" path="%4"/>
+   <linked-resource name="%7;" path="%6"/>
+   <linked-resource name="%9;" path="%8"/>
+   <linked-resource name="%11;" path="%10"/>
+   <linked-resource name="%13;" path="%12"/>
+   <linked-resource name="%15;" path="%14"/>
+   <linked-resource name="%17;" path="%16"/>
+   <linked-resource name="%19;" path="%18"/>
+   <linked-resource name="%21;" path="%20"/>
+   <linked-resource name="%23;" path="%22"/>
+   <linked-resource name="%25;" path="%24"/>
+   <linked-resource name="%27;" path="%26"/>
+   <linked-resource name="%29;" path="%28"/>
+   <linked-resource name="%31;" path="%30"/>
+   <linked-resource name="%33;" path="%32"/>
+   <linked-resource name="%35;" path="%34"/>
+   <linked-resource name="%37;" path="%36"/>
+   <linked-resource name="%39;" path="%38"/>
+   <linked-resource name="%41;" path="%40"/>
+   <linked-resource name="%43;" path="%42"/>
+   <linked-resource name="%45;" path="%44"/>
+   <linked-resource name="%47;" path="%46"/>
+   <linked-resource name="%49;" path="%48"/>
+   <linked-resource name="%51;" path="%50"/>
+   <linked-resource name="%53;" path="%52"/>
+   <linked-resource name="%55;" path="%54"/>
+  </core>
+  <el/>
+ </validation>
+ <aliases>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/EstadoEJb.java" value="%41"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/AreaEJB.java" value="%19"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/ConvocatoriaEventoDAO.java" value="%50"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/RegistroReclamoEJB.java" value="%17"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/TipoEventoDAO.java" value="%20"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/PlantillaConstanciaEJB.java" value="%47"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/RolEJB.java" value="%49"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/AnalistaEJB.java" value="%31"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/ModalidadEJB.java" value="%39"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/EventoDAO.java" value="%8"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/GeneroEJB.java" value="%45"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/TutorEJB.java" value="%27"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/DepartamentoDAO.java" value="%14"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/RegistroReclamoDAO.java" value="%16"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/EmisionConstanciaEJB.java" value="%37"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/EmisionConstanciaDAO.java" value="%36"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/GeneroDAO.java" value="%44"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/LocalidadDAO.java" value="%42"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/TipoEventoEJB.java" value="%21"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/UsuarioDAO.java" value="%54"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/TipoEJB.java" value="%23"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/JustificacionEJB.java" value="%11"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/ConvocadoEventoDAO.java" value="%24"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/ItrDAO.java" value="%32"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/TipoDAO.java" value="%22"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/EstadoEventoDAO.java" value="%0"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/TipoReclamoDAO.java" value="%28"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/ReclamoEJB.java" value="%7"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/ConvocatoriaEventoEJB.java" value="%51"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/UsuarioEJB.java" value="%55"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/TutorDAO.java" value="%26"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/RegistroJustificacionEJB.java" value="%3"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/TokenDAO.java" value="%34"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/ItrEJB.java" value="%33"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/TipoReclamoEJB.java" value="%29"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/AnalistaDAO.java" value="%30"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/ConstanciaEJB.java" value="%5"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/ReclamoDAO.java" value="%6"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/EstadoDAO.java" value="%40"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/JustificacionDAO.java" value="%10"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/RegistroConstanciaDAO.java" value="%52"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/LocalidadEJB.java" value="%43"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/AreaDAO.java" value="%18"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/TokenEJB.java" value="%35"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/DepartamentoEJB.java" value="%15"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/EstudianteDAO.java" value="%12"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/ModalidadDAO.java" value="%38"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/RolDAO.java" value="%48"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/RegistroJustificacionDAO.java" value="%2"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/ConvocadoEventoEJB.java" value="%25"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/EstadoEventoEJB.java" value="%1"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/EstudianteEJB.java" value="%13"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/PlantillaConstanciaDAO.java" value="%46"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/RegistroConstanciaEJB.java" value="%53"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/dao/ConstanciaDAO.java" value="%4"/>
+  <alias
+   path="/ochoschool.apirest/src/main/java/ochoschool/apirest/ejb/EventoEJB.java" value="%9"/>
+ </aliases>
+ <includes/>
+ <uris/>
+</kb-project>

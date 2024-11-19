@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<c:set var="title" value="Detalles del Usuario" scope="request" />
+	</ui:define>
+	<ui:define name="content">
+		<h:body>
+			<h2>Detalles del Usuario</h2>
+			<h:panelGrid columns="2">
+				<h:outputText value="ID Usuario:" />
+				<h:outputText value="#{usuarioBean.usuarioSeleccionado.idUsuario}" />
+
+				<h:outputText value="Documento:" />
+				<h:outputText value="#{usuarioBean.usuarioSeleccionado.documento}" />
+
+				<!-- Agrega más campos según tus necesidades -->
+			</h:panelGrid>
+
+			<!-- Agrega botones o enlaces para modificar los datos si es necesario -->
+			<p:commandButton value="Modificar" action="#{usuarioBean.modificarDatosUsuario}" />
+
+		</h:body>
+	</ui:define>
+</ui:composition>

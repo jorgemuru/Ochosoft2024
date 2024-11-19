@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<c:set var="title" value="Listado ITRs" scope="request" />
+	</ui:define>
+	<ui:define name="content">
+		<h:form id="formItrs">
+			<h:messages globalOnly="true" />
+
+			
+			<!-- Menú desplegable para seleccionar estado (Activo/Inactivo) -->
+			<p:panelGrid columns="2" style="margin-bottom:10px">
+				<p:outputLabel value="Filtrar por estado (Activo):" />
+				<p:selectOneMenu value="#{usuarioBean.estadoConfirmadoSeleccionado}"
+					style="width:200px">
+					<f:selectItems value="#{usuarioBean.estadosConfirmados}" />
+					<p:ajax update="tablaUsuarios"
+						listener="#{usuarioBean.filtrarDatosAcumulados}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+		
+			<!-- Tabla de ITRs -->
+        <p:dataTable id="tablaItrs" value="#{itrBean.listaItrsFiltrados}" var="itr" paginator="true" rows="10">
+            <p:column headerText="ID">
+                <h:outputText value="#{itr.idItr}" />
+            </p:column>
+            <p:column headerText="Nombre">
+                <h:outputText value="#{itr.nombre}" />
+            </p:column>
+            <p:column headerText="Departamento">
+                <h:outputText value="#{itr.departamentoAsDpto.nombre}" />
+            </p:column>
+            <p:column headerText="Activo">
+                <h:outputText value="#{itr.activo eq 'S' ? 'Sí' : 'No'}" />
+            </p:column>
+        </p:dataTable>
+		</h:form>
+
+		<!-- Confirmación -->
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+			header="Confirmación" icon="pi pi-exclamation-triangle">
+			<p:commandButton value="Sí" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+	</ui:define>
+</ui:composition>

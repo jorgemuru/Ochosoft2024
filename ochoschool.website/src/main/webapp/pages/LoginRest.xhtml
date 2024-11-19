@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Login</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</h:head>
+<h:body>
+    <h:form id="loginForm">
+        <h:outputLabel for="usuario">Usuario:</h:outputLabel>
+        <h:inputText id="usuario" value="#{loginBean.usuario}" />
+        <br />
+        <h:outputLabel for="contraseña">Contraseña:</h:outputLabel>
+        <h:inputSecret id="contraseña" value="#{loginBean.contraseña}" />
+        <br />
+        <h:commandButton value="Iniciar Sesión" onclick="login();" />
+    </h:form>
+
+    <script>
+    function login() {
+        var usuario = $('#usuario').val();
+        var contrasena = $('#contrasena').val();
+        var credenciales = { "usuario": usuario, "contrasena": contrasena };
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8080/OchoSchool/rest/login',
+            contentType: 'application/json',
+            data: JSON.stringify(credenciales),
+            success: function (data) {
+                // Verifica si la respuesta contiene una URL de redirección
+                if (data.startsWith("http")) {
+                    // Redirige a la URL proporcionada
+                    window.location.href = data;
+                } else {
+                    // Manejar la respuesta exitosa sin URL de redirección
+                    console.log('Login exitoso, pero no se proporcionó una URL de redirección.');
+                }
+            },
+            error: function (xhr, status, error) {
+                // Manejar el error, por ejemplo, mostrar un mensaje al usuario
+                alert('Error: ' + xhr.responseText);
+            }
+        });
+    }
+
+    </script>
+</h:body>
+</html>

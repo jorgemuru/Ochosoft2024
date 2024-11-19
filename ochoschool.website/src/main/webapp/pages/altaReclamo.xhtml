@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<c:set var="title" value="Alta de Reclamo" scope="request" />
+	</ui:define>
+	<ui:define name="content">
+		<f:metadata>
+			<f:viewAction action="#{usuarioBean.validateUserLogin}" />
+		</f:metadata>
+		<h:form id="formCrearReclamo">
+			<p:messages id="messages" closable="true" globalOnly="true">
+				<p:autoUpdate />
+			</p:messages>
+			<table>
+				<tr>
+					<td><label for="titulo">Titulo:</label></td>
+					<td><h:inputText id="titulo"
+							value="#{reclamoBean.reclamo.titulo}" required="true"
+							label="Título" /></td>
+					<td><p:message for="titulo" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><label for="descripcion">Descripción:</label></td>
+					<td><h:inputTextarea id="descripcion"
+							value="#{reclamoBean.reclamo.descripcion}" required="true"
+							label="Descripción" cols="30" rows="5" /></td>
+					<td><p:message for="descripcion" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td><label for="tipoReclamo">Tipo de Reclamo:</label></td>
+					<td><h:selectOneMenu id="tipoReclamo"
+							value="#{reclamoBean.tipoReclamoIdSeleccionado}"
+							onchange="mostrarCamposAdicionales(this);" styleClass="tipoReclamoMenu">
+							<f:selectItems value="#{reclamoBean.listaTiposReclamo}"
+								var="tipoReclamo" itemLabel="#{tipoReclamo.descripcion}"
+								itemValue="#{tipoReclamo.idTipoReclamo}" />
+						</h:selectOneMenu></td>
+				</tr>
+
+				<!-- Campos adicionales -->
+				<tr id="nombreRow" style="display: none;">
+					<td><label for="nombreActividad">Nombre de la
+							Actividad:</label></td>
+					<td><h:inputText id="nombreActividad" name="nombreActividad"
+							value="#{reclamoBean.nombreActividad}" /></td>
+				</tr>
+
+				<tr id="semestreRow" style="display: none;">
+					<td><label for="semestre">Semestre:</label></td>
+					<td><p:inputNumber id="semestre" name="semestre"
+						value="#{reclamoBean.semestre}" minValue="1" maxValue="8" step="1" /></td>
+				</tr>
+
+				<tr id="creditosRow" style="display: none;">
+					<td><label for="creditos">Créditos:</label></td>
+					<td><p:inputNumber id="creditos" name="creditos"
+						value="#{reclamoBean.creditos}" minValue="0" step="1" /></td>
+				</tr>
+
+				<tr id="fechaRealizacionRow" style="display: none;">
+					<td><label for="fechaRealizacion">Fecha de
+							Realización:</label></td>
+					<td><p:calendar id="fechaRealizacion"
+						name="fechaRealizacion" value="#{reclamoBean.fechaRealizacion}" label="Fecha de Realización" pattern="yyyy-MM-dd" showButtonPanel="true" navigator="true"/></td>
+				</tr>
+
+				<tr id="docenteRow" style="display: none;">
+					<td><label for="docente">Docente encargado:</label></td>
+					<td><h:selectOneMenu id="docente"
+							value="#{reclamoBean.idTutorSeleccionado}">
+							<f:selectItem itemValue="" itemLabel="Seleccione..." />
+							<f:selectItems value="#{reclamoBean.listaTutores}" var="tutor"
+								itemValue="#{tutor.idUsuario}"
+								itemLabel="#{tutor.primer_nombre} #{tutor.primer_apellido}" />
+						</h:selectOneMenu></td>
+					<td><p:message for="docente" style="color:red" /></td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><h:commandButton value="Crear"
+							action="#{reclamoBean.crearReclamo}">
+
+						</h:commandButton></td>
+				</tr>
+			</table>
+		</h:form>
+
+
+		<script type="text/javascript">
+    function mostrarCamposAdicionales(selectElement) {
+        // Obtener el texto de la opción seleccionada
+        var selectedText = selectElement.options[selectElement.selectedIndex].text.toUpperCase();
+        var camposAdicionales = ["nombreRow", "semestreRow", "fechaRealizacionRow", "docenteRow", "creditosRow"];
+
+        if (selectedText === "VME" || selectedText === "APE" || selectedText === "OPTATIVA") {
+            camposAdicionales.forEach(function(id) {
+                var row = document.getElementById(id);
+                if (row) {
+                    row.style.display = "";
+                }
+            });
+        } else {
+            camposAdicionales.forEach(function(id) {
+                var row = document.getElementById(id);
+                if (row) {
+                    row.style.display = "none";
+                }
+            });
+        }
+    }
+
+    // Ejecutar cuando el documento esté completamente cargado
+    document.addEventListener('DOMContentLoaded', function() {
+        // Seleccionar el selectOneMenu usando la clase CSS
+        var selectElements = document.getElementsByClassName('tipoReclamoMenu');
+        if (selectElements.length > 0) {
+            mostrarCamposAdicionales(selectElements[0]);
+        }
+    });
+</script>
+
+	</ui:define>
+</ui:composition>

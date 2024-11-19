@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pf="http://primefaces.org/functions">
+
+	<f:metadata>
+		<!-- Vincular el parámetro de la URL al bean -->
+		<f:viewParam name="idEstadoSeleccionado"
+			value="#{estadoBean.idEstadoSeleccionado}" />
+		<f:viewAction action="#{estadoBean.cargarEstadoSeleccionado()}"
+			if="#{!facesContext.postback}" />
+	</f:metadata>
+
+	<ui:define name="title">
+		<c:set var="title" value="Modificar Estado" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="formModificarEstado" prependId="false">
+			<!-- Messages Component -->
+			<p:messages id="messages" closable="true" showDetail="true"
+				autoUpdate="true" />
+
+
+			<table cellpadding="5"
+				style="width: 100%; border-collapse: collapse;">
+
+				<tr>
+					<td><h:outputLabel for="descripcion" value="Descripcion:" /></td>
+					<td><h:inputText id="descripcion"
+							value="#{estadoBean.estadoSeleccionado.descripcion}" /> <p:message
+							for="descripcion" style="color:red" /></td>
+				</tr>
+
+			</table>
+
+			<!-- Modify Button -->
+			<p:commandButton value="Modificar" action="#{estadoBean.modificarEstado}"
+				update="@form" process="@form">
+				<p:confirm header="Confirmación"
+					message="¿Está seguro de que desea modificar el Estado?"
+					icon="pi pi-exclamation-triangle" />
+			</p:commandButton>
+		</h:form>
+
+		<!-- Confirmación -->
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+			header="Confirmación" icon="pi pi-exclamation-triangle">
+			<p:commandButton value="Sí" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+
+	</ui:define>
+</ui:composition>
